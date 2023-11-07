@@ -2,6 +2,7 @@ package lesson2.nvhai;
 
 public class Lesson1 {
     public static void main(String[] args) {
-        System.out.println("Hi Hải!");
+        String message = "Hi Hải!";
+        System.out.println(message);
     }
 }
