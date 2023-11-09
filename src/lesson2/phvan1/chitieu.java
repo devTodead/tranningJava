@@ -1,4 +1,4 @@
-package BTVNbuoi3;
+package lesson2.phvan1;
 
 public class chitieu {
         public String tenkhoanchi;

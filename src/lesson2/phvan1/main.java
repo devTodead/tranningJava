@@ -1,4 +1,4 @@
-package BTVNbuoi3;
+package lesson2.phvan1;
 
 import java.util.Scanner;
 
