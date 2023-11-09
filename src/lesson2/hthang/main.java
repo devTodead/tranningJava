@@ -1,5 +1,5 @@
 package lesson2.hthang;
-import java.util.Scanner;
+import java.util.Scanner; //BÀI TẬP BUỔI 3
 public class main {
     public static void main (String[] args){
         chitieu tien = new chitieu();
