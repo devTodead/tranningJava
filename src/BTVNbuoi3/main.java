@@ -9,7 +9,7 @@ public class main {
         Scanner sc= new Scanner(System.in);
         System.out.printf("Nhập ten khoan chi: ");
         ct.tenkhoanchi= sc.nextLine();
-        System.out.printf("Nhập xep loai: ");
+        System.out.printf("Nhập xep loai thứ: ");
         ct.xeploaikhoanchi= sc.nextInt();
         sc.nextLine();
         System.out.printf("Nhập độ ưu tiên: ");
