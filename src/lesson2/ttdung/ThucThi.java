@@ -1,4 +1,4 @@
-package Buoi2_Bai1;
+package lesson2.ttdung;
 
 public class ThucThi {
 
