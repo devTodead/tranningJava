@@ -1,6 +1,4 @@
-package lesson2.phvan1b3;
-
-import java.util.Scanner;
+package practice1.phvan1;
 
 public class main {
     public static void main(String[] args) {
@@ -9,6 +7,7 @@ public class main {
         //Bai1.bai2();
         //Bai1.bai3();
         Bai1.bai4();
+        Bai1.bai5();
 
 
     }
