@@ -1,11 +1,12 @@
 package lesson2.hthang;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class input {
     public float a;
 
-    public void Unit1() {
+    public void Unit1() { // kiểm tra số nguyên tố
         Scanner scanner = new Scanner(System.in);
         System.out.printf("Nhập vào số: ");
         a = scanner.nextFloat();
@@ -49,7 +50,7 @@ public class input {
         }
     }
 
-    public void Unit2() {
+    public void Unit2() { //kiểm tra ucln, bcnn
         int x, y;
         Scanner scanner = new Scanner(System.in);
         System.out.printf("Nhập vào số thứ 1: ");
@@ -73,12 +74,13 @@ public class input {
         }
     }
 
-    public void Unit3() {
+    public void Unit3() { // tính tiền karaoke
         double donGia = 150000;
-        int Vao, Ra, TongGio;
+        int Vao = 0, Ra = 0 , TongGio;
         int tongGio;
-        double tienThanhToan;
+        double tienThanhToan = 0;
         double khuyenMai; //km từ giờ thứ 4
+
 
         System.out.println("Tính tiền thanh toán karaoke ");
         Scanner scanner = new Scanner(System.in);
@@ -88,23 +90,55 @@ public class input {
         System.out.printf("Nhập vào giờ ra: ");
         Ra = scanner.nextInt();
         tongGio = Ra - Vao;
-        if (tongGio > 3){
+
+        if (Vao < 12 || Ra > 23){
+            System.out.println(" Giờ không hợp lệ");
+        } else if (tongGio > 3) {
             khuyenMai = (tongGio - 3) * 0.3 * donGia;
             tienThanhToan = tongGio * donGia - khuyenMai;
-        }else {
+        } else {
             tienThanhToan = tongGio * donGia;
         }
-        System.out.println("Tiền phải trả là: " + tienThanhToan);
+        System.out.println("Tổng số giờ: " + tongGio);
+        DecimalFormat format = new DecimalFormat("###,###,###");
+        System.out.println("Tiền phải trả là: " + (format.format(tienThanhToan)) + " VNĐ");
+    }
+
+    public void Unit4() { //tính tiền điện
+        float soDien, tienDien = 0 ;
+        int bac1 = 1678;
+        int bac2 = 1734;
+        int bac3 = 2014;
+        int bac4 = 2536;
+        int bac5 = 2834;
+        int bac6 = 2927;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập vào số điện sử dụng: ");
+        soDien = scanner.nextFloat();
+
+        if (soDien < 0) {
+            System.out.println(" Số điện phải lớn hơn hoặc bằng 0 ");
+        } else if (soDien <= 50) {
+            tienDien = soDien * bac1;
+
+        } else if (soDien <= 100) {
+            tienDien = 50 * bac1 + ((soDien - 50) * bac2);
+
+        } else if (soDien <= 200) {
+            tienDien = 50 * bac1 + 50 * bac2 + ((soDien - 100) * bac3);
+
+        } else if (soDien <= 300) {
+            tienDien = 50 * bac1 + 50 * bac2 + 100 * bac3 + ((soDien - 200) * bac4);
+
+        } else if (soDien <= 400) {
+            tienDien = 50 * bac1 + 50 * bac2 + 100 * bac3 + 100 * bac4 + ((soDien - 300) * bac5);
+
+        } else if (soDien >= 401) {
+            tienDien = 50 * bac1 + 50 * bac2 + 100 * bac3 + 100 * bac4 + 100 * bac5 + ((soDien - 400) * bac6);
+
         }
-
-    public void Unit4 (){
-        float tongSoDienTieuThu;
-
-    }
+        DecimalFormat format = new DecimalFormat("###,###,###");
+        System.out.println(" Tiền điện = " + (format.format(tienDien)) + " VNĐ");
     }
 
-
-
-
-
-
+}
