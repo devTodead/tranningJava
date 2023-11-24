@@ -1,4 +1,4 @@
-package lesson2.phvan1b3;
+package practice1.phvan1;
 
 import java.util.Scanner;
 
@@ -134,5 +134,32 @@ public class   Bai1 {
             System.out.println("Số tiền điện không hợp lệ");
         }
         System.out.println("Tiền điện"+ tiendien);
+    }
+    public void bai5() {
+        Scanner bai5 = new Scanner(System.in);
+        System.out.println("Nhập số tiền cần rút");
+        int sotiencanrut = bai5.nextInt();
+        int[] loaitien = new int[9];
+        loaitien[0] = 500000;
+        loaitien[1] = 200000;
+        loaitien[2] = 100000;
+        loaitien[3] = 50000;
+        loaitien[4] = 20000;
+        loaitien[5] = 10000;
+        loaitien[6] = 5000;
+        loaitien[7] = 2000;
+        loaitien[8] = 1000;
+        int[] soto = new int[9];
+        int soconlai = sotiencanrut;
+        for (int i = 0; i < loaitien.length; i++) {
+            soto[i] = (int) (soconlai / loaitien[i]);
+            soconlai = soconlai - soto[i] * loaitien[i];
+        }
+        System.out.println("Số tiền " + sotiencanrut + " được rút tối thiểu số tờ như sau: ");
+        for(int i = 0; i<soto.length;i++){
+            if (soto[i] >0) {
+                System.out.println(soto[i] + " tờ loại tiền " + loaitien[i]);
+            }
+        }
     }
 }
