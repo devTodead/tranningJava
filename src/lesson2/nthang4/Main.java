@@ -18,6 +18,7 @@ public class Main {
         LT.CN3();
         LT.CN4();
         LT.CN5();
-       // LT.CN6();
+        LT.CN9();
+        LT.CN10();
     }
 }
