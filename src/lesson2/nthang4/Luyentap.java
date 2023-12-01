@@ -1,5 +1,6 @@
 package lesson2.nthang4;
 
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Timer;
 
@@ -49,7 +50,6 @@ public class Luyentap {
             }
         }
     }
-
     public void BCNN(int Sonho, int Solon) {
         for (int i = Solon; i >= Solon; i++) {
             if (i % Sonho == 0 & i % Solon == 0) {
@@ -206,22 +206,144 @@ public class Luyentap {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập số tiền muốn vay: ");
         Tienvay= sc.nextDouble();
-        double Laiphaitra = 0;
-        double Gocphaitra = Tienvay/12;
-        double Sotienphaitra = Laiphaitra + Gocphaitra;
-        double Sotienconlai = 0;
+        double Sotienconlai=0;
         for(int Kyhan=1; Kyhan<13; Kyhan++) {
             if (Kyhan == 1){
-                Laiphaitra = Tienvay*0.05;
-                Sotienconlai = Tienvay - Gocphaitra;
-                System.out.println("Số tiền phải trả của kỳ "+Kyhan+ " là: "+Sotienphaitra);
+                System.out.println("Kỳ hạn: "+Kyhan);
+                double Laiphaitra = Tienvay*0.05;
+                System.out.println("Tiền lãi phải trả: "+Laiphaitra);
+                Hamtinh(Tienvay, Laiphaitra, Kyhan);
             }else {
-                Laiphaitra = Sotienconlai*0.05;
-                Sotienconlai = Sotienphaitra - Gocphaitra;
-                System.out.println("Số tiền phải trả của kỳ "+Kyhan+ " là: "+Sotienphaitra);
+                System.out.println("Kỳ hạn: "+Kyhan);
+                double Laiphaitra = Sotienconlai*0.05;
+                System.out.println("Tiền lãi phải trả: "+Laiphaitra);
+                Hamtinh(Tienvay, Laiphaitra, Kyhan);
             }
         }
     }
 
+    public  void Hamtinh(double Tienvay, double Laiphaitra, int Kyhan){
+        double Gocphaitra = Tienvay/12;
+        System.out.println("Tiền gốc phải trả: "+Gocphaitra);
+        double Sotienphaitra = Laiphaitra + Gocphaitra;
+        System.out.println("Số tiền phải trả: "+Sotienphaitra);
+        double Sotienconlai = Tienvay - Gocphaitra;
+        System.out.println("Số tiền còn lại: "+Sotienconlai);
+        System.out.println("----------------");
+    }
      */
+    public void CN9() {
+        System.out.println("Đây là chức năng 9 ");
+        Scanner sc = new Scanner(System.in);
+        int So1 = sc.nextInt();
+        int So2 = sc.nextInt();
+        Random generater = new Random();
+        int value1 = generater.nextInt((15 - 1) + 1) + 1;
+        System.out.println("giá trị 1 là: " + value1);
+        int value2 = generater.nextInt((15 - 1) + 1) + 1;
+        System.out.println("giá trị 2 là: " + value2);
+        if (So1 == value1 || So1 == value2 || So2 == value1 || So2 == value2) {
+            System.out.println("Chúc mừng bạn đã trúng giải nhì");
+        } else if ((So1 == value1 & So2 == value2) || (So2 == value1 & So1 == value2)) {
+            System.out.println("Chúc mừng bạn đã trúng giải nhất");
+        } else {
+            System.out.println("Chúc bạn may mắn lần sau");
+        }
+    }
+
+    public void CN10(){
+        int MSchung = 1;
+        int UCLN = 1;
+        System.out.println("Đây là chức năng 10 ");
+        Scanner sc = new Scanner(System.in);
+        int Tu1 = sc.nextInt();
+        int Mau1 = sc.nextInt();
+        int Tu2 = sc.nextInt();
+        int Mau2 = sc.nextInt();
+        if (Mau1 !=0 & Mau2 !=0){
+            System.out.println("Phân số 1 là: "+Tu1+ "/" +Mau1);
+            System.out.println("Phân số 2 là: "+Tu2 + "/" +Mau2);
+        }
+        else{
+            System.out.println("Mẫu số phải khác 0");
+            return;
+        }
+        //Tìm bội chung nhỏ nhất của mẫu 1 và mẫu 2
+        if(Mau1<Mau2){
+            MSchung = BCNN2(Mau1,Mau2);
+        }
+        else{
+            MSchung=BCNN2(Mau2,Mau1);
+        }
+
+        //Tính tổng
+        int TuTong = MSchung/Mau1*Tu1 + MSchung/Mau2*Tu2;
+        System.out.println("Tử tổng là: "+TuTong);
+
+        //Tìm phân số tối giản của phân số tổng
+        if (TuTong<MSchung) {
+            UCLN=UCLN1(TuTong,MSchung);
+        }
+        else {
+            UCLN=UCLN1(MSchung,TuTong);
+        }
+        System.out.println("Tổng của phân số 1 và phân số 2 là: "+ TuTong/UCLN+"/"+MSchung/UCLN);
+        //Tính hiệu
+        int Tuhieu = 0;
+        if(MSchung/Mau1*Tu1 > MSchung/Mau2*Tu2){
+            Tuhieu = MSchung/Mau1*Tu1 - MSchung/Mau2*Tu2;
+        }
+        else {
+            Tuhieu = MSchung/Mau2*Tu2 - MSchung/Mau1*Tu1;
+        }
+        //Tìm phân số tối giản của phân số hiệu
+        if (Tuhieu < MSchung) {
+            UCLN=UCLN1(Tuhieu,MSchung);
+        }
+        else {
+            UCLN=UCLN1(MSchung,Tuhieu);
+        }
+        System.out.println("Hiệu của phân số 1 và phân số 2 là: "+ Tuhieu/UCLN+"/"+MSchung/UCLN);
+
+        //Tính tích
+        int Tutich = Tu1 * Tu2;
+        int Mautich = Mau1 * Mau2;
+        //Tìm UCLN của tích
+        if (Tutich < Mautich) {
+            UCLN=UCLN1(Tutich,Mautich);
+        }
+        else {
+            UCLN=UCLN1(Mautich,Tutich);
+        }
+        System.out.println("Tích của phân số 1 và phân số 2 là: "+ Tutich/UCLN + "/"+Mautich/UCLN);
+
+        //Tính thương
+        int Tuthuong = Tu1 * Mau2;
+        int Mauthuong = Mau1 * Tu2;
+        //Tính UCNN
+        if (Tuthuong < Mauthuong) {
+            UCLN=UCLN1(Tuthuong,Mauthuong);
+        }
+        else {
+            UCLN=UCLN1(Mauthuong,Tuthuong);
+        }
+        System.out.println("Thương của phân số 1 và phân số 2 là "+ Tuthuong/UCLN +"/"+Mauthuong/UCLN);
+    }
+    public int UCLN1(int Sonho, int Solon) {
+        for (int i = Sonho; i > 0; i--) {
+            if (Sonho % i == 0 & Solon % i == 0) {
+                return i;
+            }
+        }
+        return 1;
+    }
+
+    public int BCNN2(int Sonho, int Solon) {
+        for (int i = Solon; i >= Solon; i++) {
+            if (i % Sonho == 0 & i % Solon == 0) {
+                return i;
+            }
+        }
+        return Solon * Sonho;
+    }
 }
