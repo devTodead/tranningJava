@@ -33,6 +33,12 @@ public class main {
             case 8:
                 baitap.bai8();
                 break;
+            case 9:
+                baitap.bai9();
+                break;
+            case 10:
+                baitap.bai10();
+                break;
         }
 
 
