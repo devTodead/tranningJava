@@ -201,37 +201,102 @@ public class Luyentap {
             }
         }
     }
-    /*public void CN6(){
-        double Tienvay;
-        Scanner sc = new Scanner(System.in);
+    public void CN6(){
+        System.out.println("Đây là chức năng 6");
+        Scanner sc= new Scanner(System.in);
         System.out.println("Nhập số tiền muốn vay: ");
-        Tienvay= sc.nextDouble();
-        double Sotienconlai=0;
-        for(int Kyhan=1; Kyhan<13; Kyhan++) {
-            if (Kyhan == 1){
-                System.out.println("Kỳ hạn: "+Kyhan);
-                double Laiphaitra = Tienvay*0.05;
-                System.out.println("Tiền lãi phải trả: "+Laiphaitra);
-                Hamtinh(Tienvay, Laiphaitra, Kyhan);
-            }else {
-                System.out.println("Kỳ hạn: "+Kyhan);
-                double Laiphaitra = Sotienconlai*0.05;
-                System.out.println("Tiền lãi phải trả: "+Laiphaitra);
-                Hamtinh(Tienvay, Laiphaitra, Kyhan);
+        double Tienvay = sc.nextDouble();
+        double Laiphaitra = Tienvay * 0.05;
+        double Gocphaitra = Tienvay/12;
+        double Sotienphaitra = Laiphaitra + Gocphaitra;
+        double Sotienconlai = Tienvay - Gocphaitra;
+        for (int i = 1; i< 13; i++ ){
+            if(i!=1){
+                Laiphaitra = Sotienconlai*0.05;
+                Sotienphaitra = Laiphaitra + Gocphaitra;
+                Sotienconlai = Sotienconlai - Gocphaitra;
             }
+            System.out.println("Kỳ hạn: "+i);
+            System.out.println("Lãi phải trả: "+Laiphaitra);
+            System.out.println("Gốc phải trả: "+ Gocphaitra);
+            System.out.println("Số tiền phải trả: "+Sotienphaitra);
+            System.out.println("Số tiền còn lại: "+Sotienconlai);
+            System.out.println("---------");
         }
     }
 
-    public  void Hamtinh(double Tienvay, double Laiphaitra, int Kyhan){
-        double Gocphaitra = Tienvay/12;
-        System.out.println("Tiền gốc phải trả: "+Gocphaitra);
-        double Sotienphaitra = Laiphaitra + Gocphaitra;
-        System.out.println("Số tiền phải trả: "+Sotienphaitra);
-        double Sotienconlai = Tienvay - Gocphaitra;
-        System.out.println("Số tiền còn lại: "+Sotienconlai);
-        System.out.println("----------------");
+    public void CN7 (){
+        Scanner sc = new Scanner(System.in);
+        double PhantramvayCC = sc.nextDouble();
+        double Phantramvay = PhantramvayCC/100;
+        double Sotienconphaitra = 500000000 * Phantramvay;
+        double Laiphaitra = Sotienconphaitra * 0.072;
+        double Sotiengocphaitra = Sotienconphaitra /24;
+        double Sotientrahangnam = Laiphaitra + Sotiengocphaitra;
+        double Sotienconlai = Sotienconphaitra - Sotiengocphaitra;
+        for (int i=1;i<25; i++ ){
+            if (i!=1){
+                Laiphaitra = Sotienconlai * 0.072;
+                Sotientrahangnam = Laiphaitra + Sotiengocphaitra;
+                Sotienconlai = Sotienconlai - Sotiengocphaitra;
+            }
+            System.out.println("Kỳ hạn: "+i);
+            System.out.println("Lãi phải trả: "+ (int)Laiphaitra);
+            System.out.println("Số tiền gốc phải trả: "+ (int)Sotiengocphaitra);
+            System.out.println("Số tiền phải trả năm " + i + " là: "+(int)Sotientrahangnam);
+            System.out.println("Số tiền còn lại: "+(int)Sotienconlai);
+            System.out.println("-----");
+        }
     }
-     */
+    public void CN8(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập số lượng sinh viên");
+        int count = sc.nextInt();
+        Double[] arrayDiem = new Double[count];
+        String[] arrayHoten = new String[count];
+        // Nhap data
+        for (int i = 0; i < arrayDiem.length; i++){
+            System.out.println("Nhập thông tin Họ và tên");
+            String Hoten = sc.next();
+            arrayHoten[i] = Hoten;
+            System.out.println("Nhập thông tin điểm");
+            double Diem = sc.nextDouble();
+            arrayDiem[i]= Diem;
+        }
+        // xu ly data
+        for (int i=0; i < arrayDiem.length; i++){
+            for (int j = i+1; j < arrayDiem.length; j++){
+                if (arrayDiem[i] < arrayDiem[j]){
+                    double Diemtam = arrayDiem[j];
+                    arrayDiem[j]=arrayDiem[i];
+                    arrayDiem[i]=Diemtam;
+                    String Hotentam = arrayHoten[j];
+                    arrayHoten[j]=arrayHoten[i];
+                    arrayHoten[i]=Hotentam;
+                }
+            }
+        }
+        String Hocluc;
+        // Printf data
+        for (int i = 0; i < arrayDiem.length; i++){
+            System.out.println("Thông tin học sinh thứ " + (i+1) );
+            System.out.println("Họ tên: "+arrayHoten[i]);
+            System.out.println("Điểm: "+arrayDiem[i]);
+            if(arrayDiem[i]<5){
+                Hocluc = "Học lực Yếu";
+            } else if (arrayDiem[i]<6.5) {
+                Hocluc = "Học lực Trung bình";
+            } else if (arrayDiem[i]<8) {
+                Hocluc = "Học lực Khá";
+            } else if (arrayDiem[i]<9) {
+                Hocluc = "Học lực giỏi";
+            }else {
+                Hocluc = "Học lực xuất sẵc";
+            }
+            System.out.println("Học lực: "+Hocluc);
+            System.out.println("-------");
+        }
+    }
     public void CN9() {
         System.out.println("Đây là chức năng 9 ");
         Scanner sc = new Scanner(System.in);
